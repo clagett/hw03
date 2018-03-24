@@ -1,0 +1,46 @@
+---
+title: "hw03"
+author: "Matthew Clagett"
+date: "March 15, 2018"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error=TRUE, fig.path = "images/")
+```
+
+2.1 Write bash commands: I did this in GitBash, because my RStudio is not recognizing bash.
+
+```{bash}
+
+# This obtains the unique team names
+cut -d "," -f 2 nba2017-roster.csv | tail +2 | sort -u > team-names.txt
+head 5 team-names.txt
+
+# obtains the unique position names
+cut -d "," -f 3 nba2017-roster.csv | tail +2 | sort -u > position-names.txt
+head 5 position-names.txt
+
+# Counting the unique freuences displayed from largest to smallest
+cut -d "," -f 7 nba2017-roster.csv | tail +2 | sort -n -r | uniq -c > experience-counts.txt
+head -5 experience-counts.txt
+
+# Output to LAC.csv file just the clippers
+awk -F, 'NR==1 || /LAC/' nba2017-roster.csv  > LAL.csv
+cat LAC.csv
+
+# Find the age frequencies of LAL players
+grep LAL nba2017-roster.csv | cut -d "," -f 6 | sort -n -r | uniq -c
+
+# Count the number of players on the CLE team
+grep CLE nba2017-roster.csv | wc -l
+
+# Find the player, height, and weight of the GSW team, with col names
+awk -F, 'NR==1 || /GSW/' nba2017-roster.csv | cut -d "," -f 1,4,5 > gsw-height-weight.csv
+
+
+```
+
+```{r}
+source("data/binomial-functions.R")
+```
