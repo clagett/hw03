@@ -1,18 +1,11 @@
----
-title: "hw03"
-author: "Matthew Clagett"
-date: "March 15, 2018"
-output: github_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, error=TRUE, fig.path = "images/")
-```
+hw03
+================
+Matthew Clagett
+March 15, 2018
 
 2.1 Write bash commands: I did this in GitBash, because my RStudio is not recognizing bash.
 
-```{r}
-
+``` r
 # This obtains the unique team names
 #  cut -d "," -f 2 nba2017-roster.csv | tail +2 | sort -u > team-names.txt
 #  head 5 team-names.txt
@@ -37,10 +30,10 @@ knitr::opts_chunk$set(echo = TRUE, error=TRUE, fig.path = "images/")
 
 # Find the player, height, and weight of the GSW team, with col names
 #  awk -F, 'NR==1 || /GSW/' nba2017-roster.csv | cut -d "," -f 1,4,5 > gsw-height-weight.csv
-
-
 ```
 
-```{r}
+``` r
 source("code/binomial-functions.R")
 ```
+
+    ## [1] 120

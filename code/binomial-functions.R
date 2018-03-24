@@ -57,7 +57,7 @@ is_nonneg_integer <- function(x){
 #' @param x any single input
 #' @return TRUE or FALSE
 is_probability <- function(x){
-     0 <= x <= 1
+     0 <= x & x <= 1
 }
 
 
